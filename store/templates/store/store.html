@@ -1,0 +1,31 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+
+<div class="background">
+	<img src="{% static 'images/bg.jpg' %}" style="width: 1108px;
+    height: 374px;
+    padding: 0px 0px;">
+	<h1 style="position: relative;top: -240px;width: 38%;color: white;text-shadow: 2px 2px black;
+	left: 0px;margin: auto;">Ideal Place to buy Agro Products at Fair Prices</h1>
+</div>
+<h3>Hello, {{request.user}}</h3>
+<div class="row">
+		{% for product in products %}
+		<div class="col-lg-4">
+			<img class="thumbnail" src="{{product.imageURL}}">
+			<div class="box-element product">
+				<h6><strong>{{product.name}}</strong></h6>
+				<hr>
+
+				<button data-product={{product.id}} data-action="add" class="btn
+				btn-outline-secondary add-btn update-cart">Add to Cart</button>
+				<h4 style="display: inline-block; float: right"><strong>
+					₹{{product.price|floatformat:2}}</strong></h4>
+
+			</div>
+		</div>
+		{%endfor%}
+</div>
+
+{% endblock content %}
